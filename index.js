@@ -1,9 +1,21 @@
-let env = process.env.NODE_ENV || 'development'
+const async = () => {
+    return Promise.resolve();
+};
 
-let settings = require('./server/config/settings')[env]
+const env = process.env.NODE_ENV || 'development'
+const settings = require('./server/config/settings')[env]
 
-const app = require('express')()
-
-require('./server/config/express')(app)
-
-app.listen(settings.port, () => console.log(`Server listening on port ${settings.port}...`))
+async()
+    .then(() => require('./server/config/database')(settings))
+    .then(() => require('express')())
+    .then((app) => {
+        require('./server/config/express')(app)
+        return app;
+    })
+    .then((app) =>
+        app.listen(settings.port, () =>
+            console.log(`Server listening on port ${settings.port}...`))
+    )
+    .catch((err) => {
+        console.log(err);
+    });
