@@ -1,12 +1,7 @@
 const Income = require('mongoose').model('Income')
 
 const Constants = require('../utilities/constants')
-
-const extractFrom = obj => (...props) => {
-    var _result = {};
-    props.forEach(prop => _result[prop] = obj[prop])
-    return _result;
-}
+const extractFrom = require('../utilities/extractFrom')
 
 module.exports = {
     addPost: (req, res) => {

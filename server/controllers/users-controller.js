@@ -1,5 +1,7 @@
-const encryption = require('../utilities/encryption')
 const User = require('mongoose').model('User')
+
+const encryption = require('../utilities/encryption')
+const extractFrom = require('../utilities/extractFrom')
 
 module.exports = {
     registerPost: (req, res) => {
@@ -21,7 +23,11 @@ module.exports = {
                     console.log(err)
                 }
 
-                res.redirect('/')
+                let resData = extractFrom(req.user)('id', 'username', 'roles');
+
+                res.setHeader('Content-Type', 'application/json');
+                res.send(resData);
+                res.end()
             })
         })
     },
@@ -45,7 +51,11 @@ module.exports = {
                         console.log(err)
                     }
 
-                    res.redirect('/')
+                    let resData = extractFrom(req.user)('id', 'username', 'roles');
+    
+                    res.setHeader('Content-Type', 'application/json');
+                    res.send(resData);
+                    res.end()
                 })
             })
     },

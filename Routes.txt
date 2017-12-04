@@ -1,0 +1,79 @@
+User: {
+    Register: {
+        POST: 'http://localhost:3001/users/register'
+        Headers: {
+            [{"key":"Content-Type","value":"application/json"}]   
+        }
+        Body: {
+            "username": "ceco",
+            "firstName": "Cvetko",
+            "lastName": "Parandiev",
+            "password": "123"
+        }
+    }
+
+    Login: {
+        POST: 'http://localhost:3001/users/login'
+        Headers: {
+            [{"key":"Content-Type","value":"application/json"}]   
+        }
+        Body: {
+            "username": "ceco",
+            "password": "123456"
+        }
+    }
+}
+
+Incomes: {
+    Add: {
+        POST: 'http://localhost:3001/incomes'
+        Headers: {
+            [{"key":"Content-Type","value":"application/json"}]   
+        }
+        Body: {
+            "value": 91,
+            "description": "testingg",
+            "photoPath": "www.photo-path.comm",
+            "currency": "EUR",
+            "created": "2017-12-04T12:24:03.859Z",
+            "incomeGroup": "Otherr"
+        }
+    }
+
+    Update: {
+        PUT: 'http://localhost:3001/incomes/:id'
+        Headers: {
+            [{"key":"Content-Type","value":"application/json"}]   
+        }
+        Body: {
+            "value": 91,
+            "description": "testingg",
+            "photoPath": "www.photo-path.comm",
+            "currency": "EUR",
+            "created": "2017-12-04T12:24:03.859Z",
+            "incomeGroup": "Otherr"
+        }
+    }
+
+    Deleted: {
+        DELETE: 'http://localhost:3001/incomes/:id'
+        Headers: {
+            [{"key":"Content-Type","value":"application/json"}]   
+        }
+    }
+
+    GetUsersIncomes: {
+        GET: 'http://localhost:3001/users/:userId/incomes'
+        Headers: {
+            [{"key":"Content-Type","value":"application/json"}]   
+        }
+    }
+
+    GetIncomeByID: {
+        GET: 'http://localhost:3001/incomes/:id'
+        Headers: {
+            [{"key":"Content-Type","value":"application/json"}]   
+        }
+    }
+}
+
