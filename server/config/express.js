@@ -5,7 +5,7 @@ const session = require('express-session')
 const passport = require('passport')
 
 module.exports = (app) => {
-  app.use(express.static('public'))
+  app.use(express.static('client/build'))
 
   app.use(cookieParser())
 
