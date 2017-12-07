@@ -19,3 +19,17 @@ body {
   a{
     color: white
   }
+
+  div .green-toast{
+    background: rgb(14, 130, 50);
+    color: #ffffff;
+  }
+
+  div .green-toast .red-toast > .toastify__close{
+    color: #ffffff; 
+  }
+
+  div .red-toast{
+    background: rgb(136, 0, 0);
+    color: #ffffff;
+  }

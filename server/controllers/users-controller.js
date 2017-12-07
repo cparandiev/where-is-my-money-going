@@ -38,17 +38,27 @@ module.exports = {
             }).then(user => {
                 if (!user) { // unexisting username
                     console.log('Invalid user data')
+
+                    res.status(401);
+                    res.end()
                     return
                 }
 
                 if (!user.authenticate(reqUser.password)) { // invalid password
                     console.log('Invalid user data')
+
+                    res.status(401);
+                    res.end()
                     return
                 }
 
                 req.logIn(user, (err, user) => { 
                     if (err) {  // passport error
                         console.log(err)
+
+                        res.status(500);
+                        res.end()
+                        return
                     }
 
                     let resData = extractFrom(req.user)('id', 'username', 'roles');
