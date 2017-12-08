@@ -28,6 +28,12 @@ const Header = () => (
                 <li className="nav-item">
                     <Link className="nav-link" to='/users'>Authentication</Link>
                 </li>
+                <li className="nav-item">
+                    <Link className="nav-link" to='/profile'>My profile</Link>
+                </li>
+                <li className="nav-item">
+                    <Link className="nav-link" to='/incomes'>Incomes</Link>
+                </li>
             </ul>
         </div>
     </nav>
