@@ -2,7 +2,7 @@ import {toast} from 'react-toastify';
 
 function userReducer(state = null, action) {
     switch (action.type) {
-        case 'LOGIN_USER_SUCCESFULLY':
+        case 'LOGIN_USER_SUCCESSFULLY':
             toast('Successfully login!', {className: 'green-toast', autoClose: 300000})
             var newState = Object.assign({}, state);
 

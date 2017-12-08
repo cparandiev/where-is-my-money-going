@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux';
 
 import LoginSubmitForm from '../../components/LoginUser/LoginSubmitForm'
-import loginUser from '../../actions/loginUser'
+import loginUser from '../../actions/users/loginUser'
 
 export class LoginPage extends Component {
 

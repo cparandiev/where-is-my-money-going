@@ -1,3 +1,6 @@
+import loginUserSuccessfully from './loginUserSuccessfully'
+import loginUserFailed from './loginUserFailed'
+
 const loginUser = (userData) => {
     return dispatch => {
         fetch('/users/login', {
@@ -13,16 +16,10 @@ const loginUser = (userData) => {
             return response.json()
         })
         .then((body) => {
-            dispatch({
-                type: 'LOGIN_USER_SUCCESFULLY',
-                payload: body
-            })
+            dispatch(loginUserSuccessfully(body))
         })
-        .catch((err) => {
-            dispatch({
-                type: 'LOGIN_USER_FAILED',
-                payload: err
-            })
+        .catch((errors) => {
+            dispatch(loginUserFailed(errors))
         })
     }
 };
