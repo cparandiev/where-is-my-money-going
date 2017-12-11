@@ -1,30 +1,23 @@
 import React from 'react';
-import DatePicker from 'react-datepicker';
-import moment from 'moment';
+import DateTimePicker from 'react-widgets/lib/DateTimePicker'
+import moment from 'moment'
+import momentLocalizer from "react-widgets-moment"
+import 'react-widgets/dist/css/react-widgets.css'
 
-import 'react-datepicker/dist/react-datepicker.css';
+momentLocalizer(moment)
 
-class RenderDateTimePicker extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      startDate: moment()
-    };
-    this.handleChange = this
-      .handleChange
-      .bind(this);
-  }
+const renderDateTimePicker = ({
+  input: {
+    onChange,
+    value
+  },
+  showTime
+}) => <DateTimePicker
+  onChange={onChange}
+  format="DD MMM YYYY"
+  time={showTime}
+  value={!value
+  ? null
+  : new Date(value)}/>
 
-  handleChange(date) {
-    this.setState({startDate: date});
-  }
-
-  render() {
-    return <DatePicker
-      className='form-control'
-      selected={this.state.startDate}
-      onChange={this.handleChange}/>;
-  }
-}
-
-export default RenderDateTimePicker
+export default renderDateTimePicker

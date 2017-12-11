@@ -8,12 +8,12 @@ import RegisterForm from './components/RegisterUser/RegisterForm'
 import userIsAuthenticated from './utils/common/userIsAuthenticated'
 import userIsNotAuthenticated from './utils/common/userIsNotAuthenticated'
 import ProfilePage from './components/ProfilePage'
-import IncomesPage from './components/IncomesPage'
+import AddIncomePage from './containers/AddIncomePage'
 
 const Routes = () => (
     <Switch>
         <Route path='/home' component={HomePage}/>
-        <Route path='/incomes' component={IncomesPage}/>
+        <Route path='/incomes/add' component={AddIncomePage}/>
         <Route path='/profile' component={userIsAuthenticated(ProfilePage)}/>
 
         <AuthenticationPage path='/users'>

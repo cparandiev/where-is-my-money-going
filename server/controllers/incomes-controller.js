@@ -14,11 +14,25 @@ module.exports = {
             created: reqIncome.created,
             value: reqIncome.value,
             currency: reqIncome.currency,
-            description: reqIncome.description,
-            photoPath: reqIncome.photoPath
+            description: reqIncome.description
         }).then(income => {
             // Successfully added income
-            let resData = {hasErrors: false, message: Constants.SuccessfullyAddedMessage}
+            if (req.files) {
+                let photo = req.files.photo
+                let photoFormat = photo.mimetype.split('/')[1];
+                photo.mv(`client/build/images/${income.id}.${photoFormat}`, function (err) {
+                    if (err) {
+                        console.log(err)
+                        return
+                    }
+                    income.photoPath = `/images/${income.id}.${photoFormat}`
+                    income.save().catch(err => console.log(err))
+                });
+            }
+            let resData = {
+                hasErrors: false,
+                message: Constants.SuccessfullyAddedMessage
+            }
 
             res.setHeader('Content-Type', 'application/json');
             res.send(resData);
@@ -29,7 +43,7 @@ module.exports = {
     getByUserID: (req, res) => {
         let userId = req.params.userID
         //TODO Add validations!
-        
+
         Income.find({
             'userId': userId
         }).then(incomes => {
@@ -62,7 +76,10 @@ module.exports = {
         Income.findByIdAndRemove(incomeID)
             .then(income => {
                 // Successfully deleted income
-                let resData = {hasErrors: false, message: Constants.SuccessfullyDeletedMessage}
+                let resData = {
+                    hasErrors: false,
+                    message: Constants.SuccessfullyDeletedMessage
+                }
 
                 res.setHeader('Content-Type', 'application/json');
                 res.send(resData);
@@ -73,7 +90,7 @@ module.exports = {
     updateByID: (req, res) => {
         let incomeID = req.params.id
         let reqIncome = req.body
-        
+
         let newIncome = {
             incomeGroup: reqIncome.incomeGroup,
             created: reqIncome.created,
@@ -86,7 +103,10 @@ module.exports = {
         Income.findByIdAndUpdate(incomeID, newIncome)
             .then(income => {
                 // Successfully updated income
-                let resData = {hasErrors: false, message: Constants.SuccessfullyUpdatedMessage}
+                let resData = {
+                    hasErrors: false,
+                    message: Constants.SuccessfullyUpdatedMessage
+                }
 
                 res.setHeader('Content-Type', 'application/json');
                 res.send(resData);

@@ -43,8 +43,10 @@ class ImageUpload extends React.Component {
                     {$imagePreview}
                 </div>
                 <input
+                    {...this.props.input}
                     className="form-control"
                     type="file"
+                    name="photo"
                     style={{
                         marginTop: "20px"
                     }}

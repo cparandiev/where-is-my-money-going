@@ -3,6 +3,7 @@ const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const session = require('express-session')
 const passport = require('passport')
+const fileUpload = require('express-fileupload');
 
 module.exports = (app) => {
   app.use(express.static('client/build'))
@@ -20,5 +21,7 @@ module.exports = (app) => {
   app.use(passport.initialize())
   app.use(passport.session())
   
+  app.use(fileUpload())
+
   console.log('Express ready!')
 }
