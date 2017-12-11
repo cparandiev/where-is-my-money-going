@@ -35,7 +35,7 @@ const IncomesPage = (props) => {
                             </Field>
                         </div>
                         <div className='form-group'>
-                        <label htmlFor="date" className='was'>Date:</label>
+                            <label htmlFor="date" className='was'>Date:</label>
                             <Field
                                 name="username"
                                 type="date"
@@ -57,8 +57,12 @@ const IncomesPage = (props) => {
                     <button
                         onClick={handleSubmit}
                         type="button"
-                        style={{borderRadius: "35px", backgroundColor: "#0c7162"}}
-                        className="btn btn-primary btn-lg btn-block login-button">Submit</button>
+                        style={{
+                        borderRadius: "35px",
+                        backgroundColor: "#0c7162",
+                        fontSize: "25px"
+                    }}
+                        className="btn btn-primary btn-lg btn-block login-button was">Submit</button>
                 </div>
             </form>
         </div>
