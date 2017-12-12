@@ -9,11 +9,13 @@ import userIsAuthenticated from './utils/common/userIsAuthenticated'
 import userIsNotAuthenticated from './utils/common/userIsNotAuthenticated'
 import ProfilePage from './components/ProfilePage'
 import AddIncomePage from './containers/AddIncomePage'
+import IncomeDetails from './components/IncomeDetails'
 
 const Routes = () => (
     <Switch>
         <Route path='/home' component={HomePage}/>
         <Route path='/incomes/add' component={AddIncomePage}/>
+        <Route path='/incomes/:incomeId' component={IncomeDetails}/>
         <Route path='/profile' component={userIsAuthenticated(ProfilePage)}/>
 
         <AuthenticationPage path='/users'>

@@ -48,7 +48,7 @@ module.exports = {
             'userId': userId
         }).then(incomes => {
             let resData = incomes.map((income, index) => {
-                return extractFrom(income)('id', 'value', 'description', 'photoPath', 'currency', 'incomeGroup');
+                return extractFrom(income)('id', 'value', 'description', 'photoPath', 'currency', 'incomeGroup', 'created');
             })
 
             res.setHeader('Content-Type', 'application/json');
@@ -62,7 +62,7 @@ module.exports = {
 
         Income.findById(incomeID)
             .then(income => {
-                let resData = extractFrom(income)('id', 'userId', 'value', 'description', 'photoPath', 'currency', 'incomeGroup');
+                let resData = extractFrom(income)('id', 'userId', 'value', 'description', 'photoPath', 'currency', 'incomeGroup', 'created');
 
                 res.setHeader('Content-Type', 'application/json');
                 res.send(resData);
