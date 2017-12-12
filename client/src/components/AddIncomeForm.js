@@ -19,7 +19,7 @@ const AddIncomeForm = (props) => {
                 <div className="row">
                     <div className="col-lg-5">
                         <div className='form-group'>
-                            <label htmlFor="incomeGroup" className='was'>Income group:</label>
+                            <label htmlFor="incomeGroup" className='was-2'>Income group:</label>
                             <Field name="incomeGroup" component="select" className="form-control">
                                 {gropus.map(DropDownSelect)}
                             </Field>
@@ -32,14 +32,14 @@ const AddIncomeForm = (props) => {
                             label="Value:"/>
 
                         <div className='form-group'>
-                            <label htmlFor="currency" className='was'>Currency:</label>
+                            <label htmlFor="currency" className='was-2'>Currency:</label>
                             <Field name="currency" component="select" className="form-control">
                                 {currency.map(DropDownSelect)}
                             </Field>
                         </div>
 
                         <div className='form-group'>
-                            <label htmlFor="created" className='was'>Date:</label>
+                            <label htmlFor="created" className='was-2'>Date:</label>
                             <Field name="created" showTime={false} component={renderDateTimePicker}/>
                         </div>
                     </div>
@@ -64,7 +64,7 @@ const AddIncomeForm = (props) => {
                         backgroundColor: "#0c7162",
                         fontSize: "25px"
                     }}
-                        className="btn btn-primary btn-lg btn-block login-button was">Submit</button>
+                        className="btn btn-primary btn-lg btn-block login-button was-2">Submit</button>
                 </div>
             </form>
         </div>

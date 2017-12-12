@@ -12,11 +12,13 @@ const field_file = ({
     delete input.value
 
     return (
-        <div>
-            <label htmlFor={input.name}>
-                Choose File from your Computer
-                <input {...input} type={type}/>
+        <div className='form-group'>
+            <label htmlFor={input.name} className='control-label was-2'>
+                Select a photo from your device:
             </label>
+            <div className="input-group">
+                <input className="form-control" {...input} type={type}/>
+            </div>
         </div>
     )
 }

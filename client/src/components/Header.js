@@ -17,22 +17,22 @@ const Header = () => (
         <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
                 <li className="nav-item active">
-                    <Link className="nav-link" to='/home'>Home</Link>
+                    <Link className="nav-link was" to='/home'>Home</Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link" to='/about'>About</Link>
+                    <Link className="nav-link was" to='/about'>About</Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link" to='/contact'>Contact</Link>
+                    <Link className="nav-link was" to='/contact'>Contact</Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link" to='/users'>Authentication</Link>
+                    <Link className="nav-link was" to='/users'>Authentication</Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link" to='/profile'>My profile</Link>
+                    <Link className="nav-link was" to='/profile'>My profile</Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link" to='/incomes/add'>Incomes</Link>
+                    <Link className="nav-link was" to='/incomes/add'>Incomes</Link>
                 </li>
             </ul>
         </div>

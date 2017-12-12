@@ -11,10 +11,10 @@ const renderTextArea = ({
     }
 }) => (
     <div className='form-group'>
-        <label className="cols-sm-2 control-label was">{label}</label>
+        <label className="cols-sm-2 control-label was-2">{label}</label>
         <div className="cols-sm-12">
             <div className="input-group">
-                <textarea {...input} className="form-control" rows="6" />{touched && error && <span>{error}</span>}
+                <textarea {...input} className="form-control" rows="9" />{touched && error && <span>{error}</span>}
             </div>
         </div>
     </div>
