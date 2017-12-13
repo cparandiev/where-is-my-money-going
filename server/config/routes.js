@@ -13,6 +13,10 @@ module.exports = (app) => {
   app.put('/incomes/:id', controllers.incomes.updateByID)
   app.get('/users/:userID/incomes', controllers.incomes.getByUserID)
 
+  // expenses controller
+  app.post('/expenses', controllers.expenses.addPost)
+  app.get('/users/:userID/expenses', controllers.expenses.getByUserID)
+
   app.all('*', (req, res) => {
     res.status(404)
     res.send('404 Not Found!')
