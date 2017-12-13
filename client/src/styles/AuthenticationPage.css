@@ -67,6 +67,13 @@ input::-webkit-input-placeholder {
     padding: 40px 40px;
 }
 
+.main-center-4 {
+    margin-top: 30px;
+    margin: 0 auto;
+    max-width: 1600px;
+    padding: 40px 40px;
+}
+
 .login-button {
     margin-top: 5px;
 }

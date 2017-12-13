@@ -12,8 +12,12 @@
     background: #4c4256 !important;
   } */
   
-  body{
+  .App{
     background: linear-gradient(#4c4256 , #292b2c );
+  }
+
+  body{
+    background: #292b2c;
   }
   
   a{
