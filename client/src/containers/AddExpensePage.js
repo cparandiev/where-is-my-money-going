@@ -1,20 +1,20 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux';
 
-import AddIncomeForm from '../components/AddIncomeForm'
-import addIncome from '../actions/incomes/addIncome'
+import AddExpenseForm from './Expenses/AddExpenseForm'
+import addExpense from '../actions/expenses/addExpense'
 
-export class AddIncomePage extends Component {
+export class AddExpensePage extends Component {
 
     handleSubmit(data) {
         console.log('Submission received!', data);
-        this.props.dispatch(addIncome(data)); // clear form
+        this.props.dispatch(addExpense(data)); // clear form
     }
 
     render() {
         return (
             <div>
-                <AddIncomeForm
+                <AddExpenseForm
                     onSubmit={this
                     .handleSubmit
                     .bind(this)}/>
@@ -23,4 +23,4 @@ export class AddIncomePage extends Component {
     }
 }
 
-export default connect()(AddIncomePage);
+export default connect()(AddExpensePage);

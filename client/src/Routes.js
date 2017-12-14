@@ -11,6 +11,8 @@ import ProfilePage from './components/ProfilePage'
 import AddIncomePage from './containers/AddIncomePage'
 import IncomeDetails from './components/IncomeDetails'
 import IncomesList from './components/IncomesList'
+import AddExpensePage from './containers/AddExpensePage'
+import ExpensesList from './components/ExpensesList'
 
 const Routes = () => (
     <Switch>
@@ -20,6 +22,9 @@ const Routes = () => (
         <Route path='/incomes/add' component={AddIncomePage}/>
         <Route path='/incomes/:incomeId' component={IncomeDetails}/>
         <Route path='/profile' component={userIsAuthenticated(ProfilePage)}/>
+
+        <Route path='/expenses/add' component={AddExpensePage}/>
+        <Route path='/test2' component={ExpensesList}/>
 
         <AuthenticationPage path='/users'>
             <Route path='/users/login' component={userIsNotAuthenticated(LoginPage)}/>

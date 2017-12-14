@@ -5,9 +5,10 @@ import selectIncome from '../actions/incomes/selectIncome'
 
 export class IncomeDetails extends Component {
   componentWillMount() {
+    const id = this.props.match.params.incomeId
     this
       .props
-      .selectIncome(this.props.match.params.incomeId)
+      .selectIncome(id)
   }
 
   render() {

@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-import IncomeCard from './IncomeCard'
 import IncomeCard2 from './IncomeCard2'
 import getUsersIncomes from '../actions/incomes/getUsersIncomes'
 import '../styles/IncomesList.css'

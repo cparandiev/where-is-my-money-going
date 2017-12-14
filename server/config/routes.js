@@ -16,6 +16,7 @@ module.exports = (app) => {
   // expenses controller
   app.post('/expenses', controllers.expenses.addPost)
   app.get('/users/:userID/expenses', controllers.expenses.getByUserID)
+  app.delete('/expenses/:id', controllers.expenses.deleteByID)
 
   app.all('*', (req, res) => {
     res.status(404)

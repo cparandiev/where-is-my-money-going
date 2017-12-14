@@ -23,7 +23,8 @@ module.exports = {
         let newExpense = createExpense(req.body, req.user.id)
 
         Expense.create(newExpense).then(expense => {
-                sendSuccessfulResponse(res, Constants.SuccessfullyAddedMessage)
+                const resData = extractFrom(expense)('id', 'value', 'description', 'currency', 'expenseGroup', 'created');
+                sendSuccessfulResponseWithData(res, resData)
 
                 if (req.files && req.files.photo) {
                     let photo = req.files.photo
@@ -49,10 +50,19 @@ module.exports = {
             'userId': userId
         }).then(expenses => {
             let resData = expenses.map((expense, index) => {
-                return extractFrom(expense)('id', 'value', 'description', 'photoPath', 'currency', 'expenseGroup', 'created');
+                return extractFrom(expense)('id', 'value', 'description', 'currency', 'expenseGroup', 'created');
             })
 
             sendSuccessfulResponseWithData(res, resData)
         })
+    },
+    deleteByID: (req, res) => {
+        let expenseID = req.params.id
+
+        Expense.findByIdAndRemove(expenseID)
+            .then(expense => {
+                // Successfully deleted income
+                sendSuccessfulResponse(res, Constants.SuccessfullyAddedMessage)
+            })
     },
 }

@@ -1,15 +1,15 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form'
 
-import renderFullRowField from './common/renderFullRowField'
-import renderTextArea from './common/renderTextArea'
-import DropDownSelect from './common/DropDownSelect'
-import renderDateTimePicker from './common/renderDateTimePicker'
-import FileInput from '../containers/common/FileInput'
+import renderFullRowField from '../../components/common/renderFullRowField'
+import renderTextArea from '../../components/common/renderTextArea'
+import DropDownSelect from '../../components/common/DropDownSelect'
+import renderDateTimePicker from '../../components/common/renderDateTimePicker'
+import FileInput from '../common/FileInput'
 
-const AddIncomeForm = (props) => {
+const AddExpenseForm = (props) => {
     const {error, handleSubmit} = props
-    const gropus = ["Work", "Sales", "Rents"]
+    const groups = ["Work", "Sales", "Rents"]
     const currency = ["BGN", "USD", "EUR"]
 
     return (
@@ -18,9 +18,9 @@ const AddIncomeForm = (props) => {
                 <div className="row">
                     <div className="col-lg-5">
                         <div className='form-group'>
-                            <label htmlFor="incomeGroup" className='was-2'>Income group:</label>
-                            <Field name="incomeGroup" component="select" className="form-control">
-                                {gropus.map(DropDownSelect)}
+                            <label htmlFor="expenseGroup" className='was-2'>Expense group:</label>
+                            <Field name="expenseGroup" component="select" className="form-control">
+                                {groups.map(DropDownSelect)}
                             </Field>
                         </div>
 
@@ -71,5 +71,5 @@ const AddIncomeForm = (props) => {
 }
 
 export default reduxForm({
-    form: 'addIncomeSubmit' // a unique identifier for this form
-})(AddIncomeForm)
+    form: 'AddExpenseSubmit' // a unique identifier for this form
+})(AddExpenseForm)
