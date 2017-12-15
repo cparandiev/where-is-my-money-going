@@ -1,16 +1,12 @@
-import React, {Component} from 'react'
+import React from 'react'
 
 import {
-    PieChart,
-    Pie,
-    Legend,
     Tooltip,
     AreaChart,
     Area,
     XAxis,
     YAxis,
-    CartesianGrid,
-    Label
+    CartesianGrid
 } from 'recharts'
 
 

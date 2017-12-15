@@ -27,11 +27,11 @@ const Routes = () => (
         <Route path='/expenses/add' component={AddExpensePage}/>
         <Route path='/test2' component={ExpensesList}/>
 
-        <Route path='/test3' component={BalancePage}/>
+        <Route path='/test3' component={userIsAuthenticated(BalancePage)}/>
 
         <AuthenticationPage path='/users'>
             <Route path='/users/login' component={userIsNotAuthenticated(LoginPage)}/>
-            <Route path='/users/register' component={RegisterForm}/>    
+            <Route path='/users/register' component={RegisterForm}/>
         </AuthenticationPage>
     </Switch>
 )
