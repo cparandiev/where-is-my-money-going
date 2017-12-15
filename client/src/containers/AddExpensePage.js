@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom'
 
 import AddExpenseForm from './Expenses/AddExpenseForm'
 import addExpense from '../actions/expenses/addExpense'
@@ -18,9 +19,12 @@ export class AddExpensePage extends Component {
                     onSubmit={this
                     .handleSubmit
                     .bind(this)}/>
+                {this.props.redirectToPage && (<Redirect to={this.props.redirectToPage}/>)}
             </div>
         )
     }
 }
 
-export default connect()(AddExpensePage);
+const mapStateToProps = (state) => ({redirectToPage: state.usersExpenses.redirectToPage})
+
+export default connect(mapStateToProps)(AddExpensePage);

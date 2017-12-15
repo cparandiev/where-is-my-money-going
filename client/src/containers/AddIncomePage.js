@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom'
 
 import AddIncomeForm from '../components/AddIncomeForm'
 import addIncome from '../actions/incomes/addIncome'
@@ -18,9 +19,12 @@ export class AddIncomePage extends Component {
                     onSubmit={this
                     .handleSubmit
                     .bind(this)}/>
+                {this.props.redirectToPage && (<Redirect to={this.props.redirectToPage}/>)}
             </div>
         )
     }
 }
 
-export default connect()(AddIncomePage);
+const mapStateToProps = (state) => ({redirectToPage: state.usersIncomes.redirectToPage})
+
+export default connect(mapStateToProps)(AddIncomePage);

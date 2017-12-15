@@ -32,19 +32,13 @@ const Header = () => (
                     <Link className="nav-link was" to='/profile'>My profile</Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link was" to='/incomes/add'>Incomes</Link>
+                    <Link className="nav-link was" to='/incomes'>Incomes</Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link was" to='/expenses/add'>Expenses</Link>
+                    <Link className="nav-link was" to='/expenses'>Expenses</Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link was" to='/test'>Test</Link>
-                </li>
-                <li className="nav-item">
-                    <Link className="nav-link was" to='/test2'>Test2</Link>
-                </li>
-                <li className="nav-item">
-                    <Link className="nav-link was" to='/test3'>Test3</Link>
+                    <Link className="nav-link was" to='/balance'>Balance</Link>
                 </li>
             </ul>
         </div>

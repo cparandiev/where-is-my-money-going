@@ -1,37 +1,20 @@
-import addIncomeSuccessfully from './addIncomeSuccessfully'
-import addIncomeFailed from './addIncomeFailed'
+import axios from 'axios'
 
 const addIncome = (incomeData) => {
-    return dispatch => {
-        var formData = new FormData()
+    var formData = new FormData()
 
-        console.log(incomeData)
-        
-        for (var name in incomeData) {
-            if(name === "photo"){
-                formData.append(name, incomeData[name][0])
-            }
-            else{
-                formData.append(name, incomeData[name])
-            }
+    for (var name in incomeData) {
+        if (name === "photo") {
+            formData.append(name, incomeData[name][0])
+        } else {
+            formData.append(name, incomeData[name])
         }
-
-        fetch('/incomes', {
-            method: 'POST',
-            credentials: "same-origin",
-            headers: {
-                'Accept': 'application/json',
-                // 'Content-Type': 'multipart/form-data'
-            },
-            body: formData
-        }).then((response) => {
-            return response.json()
-        }).then((body) => {
-            dispatch(addIncomeSuccessfully(body))
-        }).catch((errors) => {
-            dispatch(addIncomeFailed(errors))
-        })
     }
-};
+
+    return {
+        type: 'ADD_INCOME',
+        payload: axios.post('/incomes', formData)
+    }
+}
 
 export default addIncome

@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
 import ExpenseCard from './ExpenseCard'
 import getUsersExpenses from '../actions/expenses/getUsersExpenses'
@@ -27,10 +28,16 @@ export class ExpensesList extends Component {
         let expenses = this
             .props
             .expenses
-            .map((expense) => <ExpenseCard key={expense.id} expense={expense} deleteExpense={this.deleteExpense.bind(this)}/>)
+            .map((expense) => <ExpenseCard
+                key={expense.id}
+                expense={expense}
+                deleteExpense={this
+                .deleteExpense
+                .bind(this)}/>)
 
         return (
             <div className="main-center-4">
+                <Link className="nav-link" to='/expenses/add'>Add new expense</Link>
                 <div className="row">
                     {expenses}
                 </div>
@@ -39,7 +46,7 @@ export class ExpensesList extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({expenses: state.usersExpenses, userId: state.user.id})
+const mapStateToProps = (state) => ({expenses: state.usersExpenses.data, userId: state.user.id})
 
 const mapDispatchToProps = (dispatch) => {
     return {

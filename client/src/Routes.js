@@ -18,20 +18,21 @@ import BalancePage from './containers/BalancePage'
 const Routes = () => (
     <Switch>
         <Route path='/home' component={HomePage}/>
-        <Route path='/test' component={IncomesList}/>
 
-        <Route path='/incomes/add' component={AddIncomePage}/>
-        <Route path='/incomes/:incomeId' component={IncomeDetails}/>
-        <Route path='/profile' component={userIsAuthenticated(ProfilePage)}/>
+        <Route exact path='/incomes' component={userIsAuthenticated(IncomesList)}/>
+        <Route exact path='/incomes/add' component={userIsAuthenticated(AddIncomePage)}/>
+        <Route path='/incomes/:incomeId' component={userIsAuthenticated(IncomeDetails)}/>
 
-        <Route path='/expenses/add' component={AddExpensePage}/>
-        <Route path='/test2' component={ExpensesList}/>
+        <Route exact path='/profile' component={userIsAuthenticated(ProfilePage)}/>
 
-        <Route path='/test3' component={userIsAuthenticated(BalancePage)}/>
+        <Route exact path='/expenses' component={userIsAuthenticated(ExpensesList)}/>
+        <Route exact path='/expenses/add' component={userIsAuthenticated(AddExpensePage)}/>
+        
+        <Route exact path='/balance' component={userIsAuthenticated(BalancePage)}/>
 
         <AuthenticationPage path='/users'>
             <Route path='/users/login' component={userIsNotAuthenticated(LoginPage)}/>
-            <Route path='/users/register' component={RegisterForm}/>
+            <Route path='/users/register' component={userIsNotAuthenticated(RegisterForm)}/>
         </AuthenticationPage>
     </Switch>
 )

@@ -15,6 +15,6 @@ const addExpense = (expenseData) => {
         type: 'ADD_EXPENSE',
         payload: axios.post('/expenses', formData)
     }
-};
+}
 
 export default addExpense

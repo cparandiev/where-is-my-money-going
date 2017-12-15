@@ -1,25 +1,26 @@
-const initalState = []
+const initalState = {data: [], redirectToPage: null}
 
 function usersExpensesReducer(state = initalState, action) {
     switch (action.type) {
         case 'FETCH_USERS_EXPENSES_PENDING':
             return state
         case 'FETCH_USERS_EXPENSES_FULFILLED':
-            return action.payload.data
+            return {data: action.payload.data, redirectToPage: null}
         case 'FETCH_USERS_EXPENSES_REJECTED':
             return state
 
         case 'DELETE_EXPENSE_PENDING':
             return state
         case 'DELETE_EXPENSE_FULFILLED':
-            return state.filter(expense => expense.id !== action.meta.expenseId)
+
+            return {data: state.data.filter(expense => expense.id !== action.meta.expenseId), redirectToPage: null}
         case 'DELETE_EXPENSE_REJECTED':
             return state
         
         case 'ADD_EXPENSE_PENDING':
             return state
         case 'ADD_EXPENSE_FULFILLED':
-            return [...state, action.payload.data]
+            return {data: [...state.data, action.payload.data], redirectToPage: '/expenses'}
         case 'ADD_EXPENSE_REJECTED':
             return state
 

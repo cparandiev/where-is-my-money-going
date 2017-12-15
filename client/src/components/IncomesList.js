@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
 import IncomeCard2 from './IncomeCard2'
 import getUsersIncomes from '../actions/incomes/getUsersIncomes'
@@ -24,7 +25,9 @@ export class IncomesList extends Component {
             .map((income) => <IncomeCard2 key={income.id} income={income}/>)
 
         return (
+
             <div className="main-center-4">
+                <Link className="nav-link" to='/incomes/add'>Add new income</Link>
                 <div className="row">
                     {incomes}
                 </div>
@@ -33,7 +36,7 @@ export class IncomesList extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({incomes: state.usersIncomes, userId: state.user.id})
+const mapStateToProps = (state) => ({incomes: state.usersIncomes.data, userId: state.user.id})
 
 const mapDispatchToProps = (dispatch) => {
     return {
