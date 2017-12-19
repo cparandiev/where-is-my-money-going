@@ -22,7 +22,7 @@ export class ExpensesList extends Component {
     render() {
         if (this.props.expenses.length === 0) {
             return (
-                <div className="main-center-4">Loading...</div>
+                <div className="main-center-4"><Link className="btn yellow-crusta" to='/expenses/add' style={{margin: "13px"}}>Add new expense</Link></div>
             )
         }
         let expenses = this
@@ -37,7 +37,7 @@ export class ExpensesList extends Component {
 
         return (
             <div className="main-center-4">
-                <Link className="nav-link" to='/expenses/add'>Add new expense</Link>
+                <Link className="btn yellow-crusta" to='/expenses/add' style={{margin: "13px"}}>Add new expense</Link>
                 <div className="row">
                     {expenses}
                 </div>

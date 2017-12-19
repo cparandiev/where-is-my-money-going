@@ -14,6 +14,7 @@ import IncomesList from './components/IncomesList'
 import AddExpensePage from './containers/AddExpensePage'
 import ExpensesList from './components/ExpensesList'
 import BalancePage from './containers/BalancePage'
+import ExpenseDetails from './containers/ExpenseDetails'
 
 const Routes = () => (
     <Switch>
@@ -27,7 +28,8 @@ const Routes = () => (
 
         <Route exact path='/expenses' component={userIsAuthenticated(ExpensesList)}/>
         <Route exact path='/expenses/add' component={userIsAuthenticated(AddExpensePage)}/>
-        
+        <Route path='/expenses/:expenseId' component={userIsAuthenticated(ExpenseDetails)}/>
+
         <Route exact path='/balance' component={userIsAuthenticated(BalancePage)}/>
 
         <AuthenticationPage path='/users'>

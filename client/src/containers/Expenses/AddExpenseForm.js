@@ -9,7 +9,7 @@ import FileInput from '../common/FileInput'
 
 const AddExpenseForm = (props) => {
     const {error, handleSubmit} = props
-    const groups = ["Work", "Sales", "Rents"]
+    const groups = ["Food", "Car", "Home", "Pocket money", "Bill", "Fun", "Holiday"]
     const currency = ["BGN", "USD", "EUR"]
 
     return (

@@ -6,6 +6,7 @@ import activeIncomeReducer from './activeIncomeReducer'
 import usersIncomesReducer from './usersIncomesReducer'
 import usersExpensesReducer from './usersExpensesReducer'
 import usersBalanceReducer from './usersBalanceReducer'
+import activeExpenseReducer from './activeExpenseReducer'
 
 const appReducers = combineReducers({
     form: reduxFormReducer, // mounted under "form"
@@ -13,7 +14,8 @@ const appReducers = combineReducers({
     activeIncome: activeIncomeReducer,
     usersIncomes: usersIncomesReducer,
     usersExpenses: usersExpensesReducer,
-    usersBalance: usersBalanceReducer
+    usersBalance: usersBalanceReducer,
+    activeExpense: activeExpenseReducer
 });
 
 export default appReducers

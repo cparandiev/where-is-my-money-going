@@ -50,7 +50,7 @@ const AreasChart = (props) => (
             "textAlign": "center",
             "color": "white",
             "paddingRight": "70px"
-        }}>Weekly costs</h2>
+        }}>{props.title}</h2>
         <AreaChart
             width={1000}
             height={250}

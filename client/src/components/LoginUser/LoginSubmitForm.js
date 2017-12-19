@@ -25,7 +25,7 @@ const LoginSubmitForm = (props) => {
                     style={{
                     marginTop: '40px'
                     }}>
-                    <button onClick={handleSubmit} type="button" className="btn btn-primary btn-lg btn-block login-button">Submit</button>
+                    <button onClick={handleSubmit} type="button" className="btn btn-primary btn-lg btn-block login-button yellow-crusta">Submit</button>
                 </div>
             </form>
         </div>

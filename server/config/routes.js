@@ -17,6 +17,7 @@ module.exports = (app) => {
   app.post('/expenses', controllers.expenses.addPost)
   app.get('/users/:userID/expenses', controllers.expenses.getByUserID)
   app.delete('/expenses/:id', controllers.expenses.deleteByID)
+  app.get('/expenses/:id', controllers.expenses.getByID)
 
   // balance controller
   app.get('/users/:userID/balance', controllers.balances.getByUserID)

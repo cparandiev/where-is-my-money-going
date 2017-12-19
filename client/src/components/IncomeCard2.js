@@ -8,6 +8,9 @@ function IncomeCard2(props) {
     let creationTime = creationDateAndTime.toLocaleTimeString()
     let creationDate = creationDateAndTime.toLocaleDateString()
     let currencySymbol = getCurrencySymbols(props.income.currency)
+    const deleteIncome = () => {
+        props.deleteIncome(props.income.id)
+    }
 
     return (
         <div className="col-md-3">
@@ -39,12 +42,18 @@ function IncomeCard2(props) {
                     </ul>
                     <div className="pricing-footer">
                         <Link className="btn yellow-crusta" to={`/incomes/${props.income.id}`}>Details</Link>
-                        <Link
+                        {/* <Link
                             className="btn red-crusta"
                             style={{
                             marginLeft: "20px"
                         }}
-                            to={`/incomes/${props.income.id}/delete`}>Delete</Link>
+                            to={`/incomes/${props.income.id}/delete`}>Delete</Link> */}
+                        <button
+                            onClick={deleteIncome}
+                            className="btn red-crusta"
+                            style={{
+                            marginLeft: "20px"
+                        }}>Delete</button>
 
                         {/* <a href="javascript:;" className="btn yellow-crusta">
                             Details

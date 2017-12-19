@@ -56,13 +56,23 @@ module.exports = {
             sendSuccessfulResponseWithData(res, resData)
         })
     },
+    getByID: (req, res) => {
+        let expenseId = req.params.id
+
+        Expense.findById(expenseId)
+            .then(expense => {
+                let resData = extractFrom(expense)('id', 'userId', 'value', 'description', 'photoPath', 'currency', 'expenseGroup', 'created');
+
+                sendSuccessfulResponseWithData(res, resData)
+            })
+    },
     deleteByID: (req, res) => {
         let expenseID = req.params.id
 
         Expense.findByIdAndRemove(expenseID)
             .then(expense => {
-                // Successfully deleted income
-                sendSuccessfulResponse(res, Constants.SuccessfullyAddedMessage)
+                // Successfully deleted expense
+                sendSuccessfulResponse(res, Constants.SuccessfullyDeletedMessage)
             })
     },
 }

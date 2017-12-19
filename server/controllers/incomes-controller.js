@@ -2,6 +2,7 @@ const Income = require('mongoose').model('Income')
 
 const Constants = require('../utilities/constants')
 const extractFrom = require('../utilities/extractFrom')
+const sendSuccessfulResponse = require('../utilities/sendSuccessfulResponse')
 
 module.exports = {
     addPost: (req, res) => {
@@ -76,14 +77,7 @@ module.exports = {
         Income.findByIdAndRemove(incomeID)
             .then(income => {
                 // Successfully deleted income
-                let resData = {
-                    hasErrors: false,
-                    message: Constants.SuccessfullyDeletedMessage
-                }
-
-                res.setHeader('Content-Type', 'application/json');
-                res.send(resData);
-                res.end()
+                sendSuccessfulResponse(res, Constants.SuccessfullyDeletedMessage)
             })
     },
 

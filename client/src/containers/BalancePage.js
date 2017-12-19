@@ -64,7 +64,7 @@ export class BalancePage extends Component {
           <DateTimeRangeForm onSubmit={this.handleSubmit.bind(this)}/>
         </div>
         <div>
-          <AreasChart balance={processedBalance}/>
+          <AreasChart balance={processedBalance} title="Expenses and Incomes"/>
         </div>
       </div>
     )

@@ -13,7 +13,7 @@ const style = {
 const RegisterSubmitBtn = ({ dispatch }) =>
   <button
     type="button"
-    className="btn btn-primary btn-lg btn-block login-button"
+    className="btn yellow-crusta"
     style={style}
     onClick={() => dispatch(submit('registerSubmit'))}>Register</button>
 //                                  ^^^^^^^^^^^^ name of the form
