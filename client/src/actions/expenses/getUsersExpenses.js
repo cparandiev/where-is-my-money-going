@@ -1,9 +1,14 @@
 import axios from 'axios'
 
-const getUsersExpenses = (userId) => {
+const getUsersExpenses = (userId, from, to) => {
     return {
         type: 'FETCH_USERS_EXPENSES',
-        payload: axios.get(`/users/${userId}/expenses`)
+        payload: axios.get(`/users/${userId}/expenses`,{
+            params:{
+                from,
+                to
+            }
+        })
     }
 };
 

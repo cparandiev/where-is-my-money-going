@@ -23,8 +23,7 @@ module.exports = (app) => {
   app.get('/users/:userID/balance', controllers.balances.getByUserID)
 
   app.all('*', (req, res) => {
-    res.status(404)
-    res.send('404 Not Found!')
+    res.redirect('/')
     res.end()
   })
 }

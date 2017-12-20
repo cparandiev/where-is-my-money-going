@@ -42,11 +42,24 @@ module.exports = {
     },
 
     getByUserID: (req, res) => {
-        let userId = req.params.userID
         //TODO Add validations!
+        
+        let from = req.query.from == null ?
+            new Date(-8640000000000000) :
+            new Date(req.query.from)
+
+        let to = req.query.to == null ?
+            new Date(8640000000000000) :
+            new Date(req.query.to)
+
+        let userId = req.params.userID
 
         Income.find({
-            'userId': userId
+            'userId': userId,
+            'created': {
+                '$gte': from,
+                '$lte': to
+            }
         }).then(incomes => {
             let resData = incomes.map((income, index) => {
                 return extractFrom(income)('id', 'value', 'description', 'photoPath', 'currency', 'incomeGroup', 'created');

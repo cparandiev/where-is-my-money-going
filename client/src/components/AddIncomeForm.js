@@ -9,7 +9,7 @@ import FileInput from '../containers/common/FileInput'
 
 const AddIncomeForm = (props) => {
     const {error, handleSubmit} = props
-    const gropus = ["Work", "Sales", "Rents"]
+    const gropus = ["Other", "Work", "Sales", "Rents"]
     const currency = ["BGN", "USD", "EUR"]
 
     return (
