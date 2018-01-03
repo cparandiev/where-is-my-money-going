@@ -77,6 +77,44 @@ export class BalancePage extends Component {
     return result
   }
 
+  processBalanceData2(data) {
+    let result = []
+    let keys = Object.keys(data)
+
+    let startDate = new Date(Math.min(...keys))
+    let endDate = new Date(Math.max(...keys))
+
+    for(let i = startDate; i <= endDate; i = addDays(i, 1)){
+      if (i === startDate) {
+        result.push({
+          name: i.toDateString(),
+          income: data[i.getTime()].income,
+          expense: data[i.getTime()].expense
+        })
+
+        continue
+      }
+
+      if(!data[i.getTime()]){
+        result.push({
+          name: i.toDateString(),
+          income: result[result.length - 1].income,
+          expense: result[result.length - 1].expense
+        })
+
+        continue
+      }
+
+      result.push({
+        name: i.toDateString(),
+        income: result[result.length - 1].income + data[i.getTime()].income,
+        expense: result[result.length - 1].expense + data[i.getTime()].expense
+      })
+    }
+
+    return result
+  }
+
   processExpensesData(data){
     let temp = [],
       result =[]
@@ -129,7 +167,7 @@ export class BalancePage extends Component {
   //         value: 189
   //     }
   // ]
-    const processedBalance = this.processBalanceData(this.props.balance)
+    const processedBalance = this.processBalanceData2(this.props.balance)
     const processedExpenses = this.processExpensesData(this.props.expenses)
     const processedIncomes = this.processIncomesData(this.props.incomes)
 
