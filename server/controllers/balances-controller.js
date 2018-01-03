@@ -1,5 +1,6 @@
 const Expense = require('mongoose').model('Expense')
 const Income = require('mongoose').model('Income')
+const Rx = require('rxjs/Rx')
 
 const extractFrom = require('../utilities/extractFrom')
 const getItemsByDate = require('../utilities/getItemsByDate')
@@ -21,7 +22,7 @@ module.exports = {
 
         let userId = req.params.userID
 
-        const incomes = Income.find({
+        /*const incomes = Income.find({
             'userId': userId,
             'created': {
                 '$gte': from,
@@ -50,39 +51,54 @@ module.exports = {
             }
 
             sendSuccessfulResponseWithData(res, balance)
+        })*/
+
+        const fetchUserIncomes = Income.find({
+            'userId': userId,
+            'created': {
+                '$gte': from,
+                '$lte': to
+            }
         })
 
-        // Income.find({
-        //     'userId': userId,
-        //     "created": {
-        //         "$gte": from,
-        //         "$lte": to
-        //     }
-        // }).then(incomes => {
-        //     let resData = incomes.map((income, index) => {
-        //         return extractFrom(income)('id', 'value', 'description', 'currency', 'incomeGroup', 'created');
-        //     })
+        const fetchUserExpenses =  Expense.find({
+            'userId': userId,
+            'created': {
+                '$gte': from,
+                '$lte': to
+            }
+        })
 
-        //     let incomesValue = Object.create(null)
+        var userExpenses = Rx.Observable.fromPromise(fetchUserExpenses)
+        var userIncomes = Rx.Observable.fromPromise(fetchUserIncomes)
 
-        //     //TODO To calculate with the coefficient for the currency
-        //     for (var i = from; i <= to; i = addDays(i, 1)) {
-        //         let dayIncomes = getItemsByDate(incomes, i, 'created')
-        //         //resData2[i.setHours(0, 0, 0, 0)] = dayIncomes.map(income => income.value)
-        //         incomesValue[i.setHours(0, 0, 0, 0)] = dayIncomes.reduce((a, b) => a + b.value, 0)
-        //     }
+        var userExpensesAndIncomes = Rx.Observable
+            .forkJoin(userExpenses, userIncomes)
+            .flatMap(([userExpenses, userIncomes]) => {
+                return Rx.Observable.from(userExpenses.concat(userIncomes))
+            })
+            .map(el => {
+                return {
+                    created: el.created, 
+                    type: el.expenseGroup ? 'expense' : 'income',
+                    value: el.value
+                }
+            })
+            .startWith(Object.create(null))
+            .reduce((acc, el) => {
+                let key = el.created.setHours(0, 0, 0, 0)
 
-        //     return new Promise((resolve) => {
-        //         resolve(incomesValue)
-        //     })
-        //     sendSuccessfulResponseWithData(res, incomesValue)
-        // }).then(incomesValue => {
-        //     Expense.find({
-        //         'userId': userId
-        //     }.then((expenses) =>{
+                let sybKey = el.type                
+                let otherSubKey = el.type === 'expense' ? 'income' : 'expense'
 
-        //         return new Promise({incomesValue, expenses})
-        //     })
-        // })
+                acc[key] = acc[key] ? acc[key] : Object.create(null)
+
+                acc[key][sybKey] = acc[key][sybKey] ? acc[key][sybKey] + el.value : el.value
+                
+                acc[key][otherSubKey] = acc[key][otherSubKey] ? acc[key][otherSubKey] : 0
+                        
+                return Object.assign(Object.create(null), acc)
+            })
+            .subscribe(balance => sendSuccessfulResponseWithData(res, balance))
     }
 }
