@@ -4,7 +4,8 @@ import 'react-toastify/dist/ReactToastify.min.js';
 import 'bootstrap-css'
 
 import Routes from '../Routes'
-import Header from './Header'
+//import Header from './Header'
+import Header from '../containers/Header'
 
 const App = () => (
   <div className="App">

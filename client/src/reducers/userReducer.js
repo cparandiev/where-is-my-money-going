@@ -15,6 +15,10 @@ function userReducer(state = null, action) {
             toast('Wrong username or password!', { className: 'red-toast', autoClose: 3000})
         
             return state;
+        case 'LOGOUT_USER':
+            toast('Successfully logout!', {className: 'green-toast', autoClose: 3000})
+        
+            return null;
         default:
             return state;
     }

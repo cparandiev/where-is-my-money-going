@@ -15,6 +15,7 @@ import AddExpensePage from './containers/AddExpensePage'
 import ExpensesList from './components/ExpensesList'
 import BalancePage from './containers/BalancePage'
 import ExpenseDetails from './containers/ExpenseDetails'
+import Logout from './containers/Logout'
 
 const Routes = () => (
     <Switch>
@@ -34,6 +35,7 @@ const Routes = () => (
 
         <AuthenticationPage path='/users'>
             <Route path='/users/login' component={userIsNotAuthenticated(LoginPage)}/>
+            <Route path='/users/logout' component={userIsAuthenticated(Logout)}/>
             <Route path='/users/register' component={userIsNotAuthenticated(RegisterForm)}/>
         </AuthenticationPage>
     </Switch>
