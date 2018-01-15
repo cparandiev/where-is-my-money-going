@@ -8,7 +8,7 @@ const RegisterSubmitForm = (props) => {
     const {error, handleSubmit} = props
     return (
         <div className="main-login main-center">
-            <form onSubmit={handleSubmit} className="form-horizontal">
+            <form className="form-horizontal">
                 <Field
                     name="firstName"
                     type="text"
@@ -40,7 +40,7 @@ const RegisterSubmitForm = (props) => {
                     component={renderField}
                     label="Confirm Password:"/> {error && <strong>{error}</strong>}
                 <div className="form-group " style={{marginTop: '40px'}}>
-                    <RegisterSubmitBtn/>
+                    <RegisterSubmitBtn onclick={handleSubmit}/>
                 </div>
             </form>
         </div>
@@ -48,6 +48,5 @@ const RegisterSubmitForm = (props) => {
 }
 
 export default reduxForm({
-    form: 'registerSubmit', // a unique identifier for this form
-    onSubmit: submit // submit function must be passed to onSubmit
+    form: 'registerSubmit' // a unique identifier for this form
 })(RegisterSubmitForm)
