@@ -1,28 +1,28 @@
-import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
-import getCurrencySymbols from '../utils/common/getCurrencySymbols'
+import getCurrencySymbols from '../utils/common/getCurrencySymbols';
 
 export class ExpenseCard extends Component {
     deleteExpense() {
         this
             .props
-            .deleteExpense(this.props.expense.id)
+            .deleteExpense(this.props.expense.id);
     }
 
     render() {
-        let expense = this.props.expense
-        let creationDateAndTime = new Date(expense.created)
-        let creationTime = creationDateAndTime.toLocaleTimeString()
-        let creationDate = creationDateAndTime.toLocaleDateString()
-        let currencySymbol = getCurrencySymbols(expense.currency)
+        let expense = this.props.expense;
+        let creationDateAndTime = new Date(expense.created);
+        let creationTime = creationDateAndTime.toLocaleTimeString();
+        let creationDate = creationDateAndTime.toLocaleDateString();
+        let currencySymbol = getCurrencySymbols(expense.currency);
 
         return (
             <div className="col-md-3">
                 <div className="col-md-12">
-                    <div className="pricing hover-effect">
+                    <div className="pricing hover-effect" style={{borderRadius: "30px"}}>
                         <div className="pricing-head">
-                            <h3>{expense.expenseGroup}
+                            <h3 style={{borderTopLeftRadius: "25px", borderTopRightRadius: "25px"}}>{expense.expenseGroup}
                                 <span>
                                     {creationDate}
                                 </span>
@@ -53,13 +53,14 @@ export class ExpenseCard extends Component {
                                 className="btn red-crusta"
                                 style={{
                                 marginLeft: "20px"
-                            }}>Delete</button>
+                            }}
+                            >Delete</button>
                         </div>
                     </div>
                 </div>
             </div>
-        )
+        );
     }
 }
 
-export default ExpenseCard
+export default ExpenseCard;

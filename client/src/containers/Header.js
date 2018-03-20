@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
 
 export class Header extends Component {
   
@@ -15,7 +15,8 @@ export class Header extends Component {
             data-target="#navbarNav"
             aria-controls="navbarNav"
             aria-expanded="false"
-            aria-label="Toggle navigation">
+            aria-label="Toggle navigation"
+        >
             <span className="navbar-toggler-icon" />
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">

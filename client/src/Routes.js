@@ -1,23 +1,23 @@
-import React from 'react'
-import {Route, Switch} from 'react-router-dom'
+import React from 'react';
+import {Route, Switch} from 'react-router-dom';
 
-import HomePage from './components/HomePage'
-import AuthenticationPage from './components/AuthenticationPage'
-import LoginPage from './containers/LoginUser/LoginPage'
-import RegisterForm from './components/RegisterUser/RegisterForm'
-import userIsAuthenticated from './utils/common/userIsAuthenticated'
-import userIsNotAuthenticated from './utils/common/userIsNotAuthenticated'
-import ProfilePage from './components/ProfilePage'
-import AddIncomePage from './containers/AddIncomePage'
-import IncomeDetails from './components/IncomeDetails'
-import IncomesList from './components/IncomesList'
-import AddExpensePage from './containers/AddExpensePage'
-import ExpensesList from './components/ExpensesList'
-import BalancePage from './containers/BalancePage'
-import ExpenseDetails from './containers/ExpenseDetails'
-import Logout from './containers/Logout'
+import HomePage from './components/HomePage';
+import AuthenticationPage from './components/AuthenticationPage';
+import LoginPage from './containers/LoginUser/LoginPage';
+import RegisterForm from './components/RegisterUser/RegisterForm';
+import userIsAuthenticated from './utils/common/userIsAuthenticated';
+import userIsNotAuthenticated from './utils/common/userIsNotAuthenticated';
+import ProfilePage from './components/ProfilePage';
+import AddIncomePage from './containers/AddIncomePage';
+import IncomeDetails from './components/IncomeDetails';
+import IncomesList from './components/IncomesList';
+import AddExpensePage from './containers/AddExpensePage';
+import ExpensesList from './components/ExpensesList';
+import BalancePage from './containers/BalancePage';
+import ExpenseDetails from './containers/ExpenseDetails';
+import Logout from './containers/Logout';
 
-const Routes = () => (
+const Routes = () => 
     <Switch>
         <Route path='/home' component={HomePage}/>
 
@@ -39,6 +39,6 @@ const Routes = () => (
             <Route path='/users/register' component={userIsNotAuthenticated(RegisterForm)}/>
         </AuthenticationPage>
     </Switch>
-)
+;
 
-export default Routes
+export default Routes;

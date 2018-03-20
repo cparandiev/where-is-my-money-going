@@ -1,6 +1,7 @@
 const Expense = require('mongoose').model('Expense')
 const Income = require('mongoose').model('Income')
 const Rx = require('rxjs/Rx')
+const axios = require('axios')
 
 const extractFrom = require('../utilities/extractFrom')
 const getItemsByDate = require('../utilities/getItemsByDate')
@@ -69,19 +70,29 @@ module.exports = {
             }
         })
 
+        const fetchCurrencyRates = axios.get('http://data.fixer.io/api/latest?access_key=a690d368624180fc163fe6e34a78fe62&base=EUR&symbols=USD,%20BGN');
+
         var userExpenses = Rx.Observable.fromPromise(fetchUserExpenses)
         var userIncomes = Rx.Observable.fromPromise(fetchUserIncomes)
+        var currencyRatesBaseOnEuro = Rx.Observable.fromPromise(fetchCurrencyRates)
+        var currencyRatesResult = Object.create(null)
 
         var userExpensesAndIncomes = Rx.Observable
-            .forkJoin(userExpenses, userIncomes)
-            .flatMap(([userExpenses, userIncomes]) => {
+            .forkJoin(userExpenses, userIncomes, currencyRatesBaseOnEuro)
+            .flatMap(([userExpenses, userIncomes, currencyRates]) => {
+                let temp = currencyRates.data;
+                currencyRatesResult.EUR = 1;
+                currencyRatesResult.USD = temp.rates.USD;
+                currencyRatesResult.BGN = temp.rates.BGN;
+
+
                 return Rx.Observable.from(userExpenses.concat(userIncomes))
             })
             .map(el => {
                 return {
                     created: el.created, 
                     type: el.expenseGroup ? 'expense' : 'income',
-                    value: el.value
+                    value: el.value / currencyRatesResult[el.currency],
                 }
             })
             .startWith(Object.create(null))

@@ -37,6 +37,7 @@ input::-webkit-input-placeholder {
 
 .main-login {
     background-color: #fff;
+    text-align: center;
     /* shadows and rounded borders */
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
@@ -72,6 +73,13 @@ input::-webkit-input-placeholder {
     margin: 0 auto;
     max-width: 1600px;
     padding: 40px 40px;
+}
+
+.main-center-5 {
+    margin-top: 300px;
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 200px 40px;
 }
 
 .login-button {

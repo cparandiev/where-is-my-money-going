@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/cparandiev/where-is-my-money-going#readme",
   "dependencies": {
+    "axios": "0.18.0",
     "body-parser": "1.18.2",
     "cookie-parser": "1.4.3",
     "crypto": "1.0.1",

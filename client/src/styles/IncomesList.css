@@ -128,6 +128,8 @@ Pricing table
 .yellow-crusta.btn.active {
     color: #FFFFFF;
     background-color: #36d7ac;
+    border-color: #36d7ac;
+    cursor: pointer;
 }
 
 .red-crusta.btn {

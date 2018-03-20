@@ -1,25 +1,27 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
-import selectIncome from '../actions/incomes/selectIncome'
+import selectIncome from '../actions/incomes/selectIncome';
 
 export class IncomeDetails extends Component {
   componentWillMount() {
-    const id = this.props.match.params.incomeId
+    const id = this.props.match.params.incomeId;
     this
       .props
-      .selectIncome(id)
+      .selectIncome(id);
   }
 
   render() {
     return (
       <div
-        className="card"
-        style={{
+          className="card"
+          style={{
         width: "50rem"
       }}
-        className="main-center-3">
-        <img className="card-img-top" src={this.props.photoPath} alt="Income"/>
+          className="main-center-3"
+      >
+        <div className="b-container">
+        <img className="x-card-img-top" src={this.props.photoPath} alt="Income" style={{height: "500px"}}/>
         {/* <img
           className="card-img-top"
           src="https://cdn.vertex42.com/ExcelTemplates/Images/income-statement_screenshot.gif"
@@ -35,8 +37,9 @@ export class IncomeDetails extends Component {
           <li className="list-group-item"><strong>Created on:</strong> {this.props.created}</li>
           <li className="list-group-item"><strong>Group:</strong> {this.props.incomeGroup}</li>
         </ul>
+        </div>
       </div>
-    )
+    );
   }
 }
 
@@ -49,12 +52,12 @@ const mapStateToProps = (state) => ({
   created: state.activeIncome.created,
   incomeGroup: state.activeIncome.incomeGroup,
   photoPath: state.activeIncome.photoPath
-})
+});
 
 const mapDispatchToProps = (dispatch) => {
   return {
     selectIncome: incomeId => dispatch(selectIncome(incomeId))
-  }
-}
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(IncomeDetails)
+export default connect(mapStateToProps, mapDispatchToProps)(IncomeDetails);

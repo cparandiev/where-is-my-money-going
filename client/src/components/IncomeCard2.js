@@ -1,23 +1,23 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
+import React from 'react';
+import {Link} from 'react-router-dom';
 
-import getCurrencySymbols from '../utils/common/getCurrencySymbols'
+import getCurrencySymbols from '../utils/common/getCurrencySymbols';
 
 function IncomeCard2(props) {
-    let creationDateAndTime = new Date(props.income.created)
-    let creationTime = creationDateAndTime.toLocaleTimeString()
-    let creationDate = creationDateAndTime.toLocaleDateString()
-    let currencySymbol = getCurrencySymbols(props.income.currency)
+    let creationDateAndTime = new Date(props.income.created);
+    let creationTime = creationDateAndTime.toLocaleTimeString();
+    let creationDate = creationDateAndTime.toLocaleDateString();
+    let currencySymbol = getCurrencySymbols(props.income.currency);
     const deleteIncome = () => {
-        props.deleteIncome(props.income.id)
-    }
+        props.deleteIncome(props.income.id);
+    };
 
     return (
         <div className="col-md-3">
             <div className="col-md-12">
-                <div className="pricing hover-effect">
+                <div className="pricing hover-effect" style={{borderRadius: "30px"}}>
                     <div className="pricing-head">
-                        <h3>{props.income.incomeGroup}
+                        <h3 style={{borderTopLeftRadius: "25px", borderTopRightRadius: "25px"}}>{props.income.incomeGroup}
                             <span>
                                 {creationDate}
                             </span>
@@ -53,7 +53,8 @@ function IncomeCard2(props) {
                             className="btn red-crusta"
                             style={{
                             marginLeft: "20px"
-                        }}>Delete</button>
+                        }}
+                        >Delete</button>
 
                         {/* <a href="javascript:;" className="btn yellow-crusta">
                             Details
@@ -65,7 +66,7 @@ function IncomeCard2(props) {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default IncomeCard2
+export default IncomeCard2;
