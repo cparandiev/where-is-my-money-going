@@ -30,10 +30,9 @@ const DateTimeRangeForm = (props) => {
                         type="button"
                         style={{
                         borderRadius: "35px",
-                        backgroundColor: "#0c7162",
                         fontSize: "25px"
                     }}
-                        className="btn btn-primary btn-lg btn-block login-button was-2">Display</button>
+                        className="btn btn-primary btn-lg btn-block login-button was-2 yellow-crusta">Display</button>
                 </div>
             </form>
         </div>

@@ -1,5 +1,7 @@
 const Expense = require('mongoose').model('Expense')
+const path = require('path')
 
+const distPath = path.join(__dirname, '../../client/build/images/');
 const Constants = require('../utilities/constants')
 const extractFrom = require('../utilities/extractFrom')
 const movePhoto = require('../utilities/movePhoto')
@@ -32,7 +34,7 @@ module.exports = {
 
                     //TODO to expose newPhotoDir from constans
                     return new Promise((resolve) => {
-                        movePhoto(photo, expense.id, 'client/build/images', photoFormat)
+                        movePhoto(photo, expense.id, distPath, photoFormat)
                             .then(() => resolve({expense, photoFormat }))
                     })
                 }

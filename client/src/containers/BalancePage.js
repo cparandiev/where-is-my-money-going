@@ -116,11 +116,13 @@ export class BalancePage extends Component {
   }
 
   processExpensesData(data){
+    const currencyRates = {BGN: 1.95583, EUR: 1, USD: 1.23839 }
+
     let temp = [],
       result =[]
 
     for(let i = 0; i < data.length; i+=1){
-      temp[data[i].expenseGroup] = temp[data[i].expenseGroup] || 0 + data[i].value
+      temp[data[i].expenseGroup] = temp[data[i].expenseGroup] || 0 + data[i].value / currencyRates[data[i].currency]
     }
 
     Object.keys(temp).forEach(function(key) {
@@ -173,7 +175,7 @@ export class BalancePage extends Component {
 
     return (
       <div>
-        <div className='row'>
+        <div className='row x-margin-top'>
           <div className='col-md-2'/>
           <div className='col-md-2'>
             <DateTimeRangeForm onSubmit={this.handleSubmit.bind(this)}/>
@@ -242,7 +244,7 @@ export class BalancePage extends Component {
                     isAnimationActive={true}/>
               <Tooltip
                   formatter={(value) => {
-                  return `${value} $`
+                  return `${value} €`
               }}/>
           </PieChart>
         </div>

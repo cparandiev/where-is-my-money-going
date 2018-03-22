@@ -4,9 +4,13 @@ const bodyParser = require('body-parser')
 const session = require('express-session')
 const passport = require('passport')
 const fileUpload = require('express-fileupload');
+const path = require('path')
+
+const distPath = path.join(__dirname, '../../client/build');
 
 module.exports = (app) => {
-  app.use(express.static('client/build'))
+  
+  app.use(express.static(distPath))
 
   app.use(cookieParser())
   

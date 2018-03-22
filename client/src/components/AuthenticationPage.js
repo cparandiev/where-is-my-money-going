@@ -6,7 +6,8 @@ import '../styles/AuthenticationPage.css'
 
 const AuthenticationPage = (props) => (
   <div className="main-center">
-    <nav className="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+    <nav className="navbar navbar-toggleable-md navbar-inverse bg-inverse" 
+      style={{borderTopLeftRadius: "10px", borderTopRightRadius: "10px", border: "solid 1px", borderColor: "white"}}>
       <ul className="navbar-nav">
         <li className="nav-item">
           <Link className="nav-link" to='/users/login'>Login</Link>

@@ -88,3 +88,21 @@
     color: white;
     
   } 
+
+  .x-nav{
+    border-bottom: solid 1px;
+    border-color: white;
+    background: linear-gradient(#443b4e, #ac96c3 );
+  }
+
+  .x-form{
+    border: 1px solid;
+    border-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    background: linear-gradient(#ac96c3 , #443b4e );
+  }
+
+  .x-margin-top{
+    margin-top: 50px;
+  }

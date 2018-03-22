@@ -1,5 +1,7 @@
 const Income = require('mongoose').model('Income')
+const path = require('path')
 
+const distPath = path.join(__dirname, '../../client/build/images/');
 const Constants = require('../utilities/constants')
 const extractFrom = require('../utilities/extractFrom')
 const sendSuccessfulResponse = require('../utilities/sendSuccessfulResponse')
@@ -21,7 +23,7 @@ module.exports = {
             if (req.files) {
                 let photo = req.files.photo
                 let photoFormat = photo.mimetype.split('/')[1];
-                photo.mv(`client/build/images/${income.id}.${photoFormat}`, function (err) {
+                photo.mv(`${distPath}/${income.id}.${photoFormat}`, function (err) {
                     if (err) {
                         console.log(err)
                         return

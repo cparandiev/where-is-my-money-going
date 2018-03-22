@@ -7,7 +7,7 @@ import RegisterSubmitBtn from './RegisterSubmitBtn';
 const RegisterSubmitForm = (props) => {
     const {error, handleSubmit} = props;
     return (
-        <div className="main-login main-center">
+        <div className="main-login main-center" style={{borderBottomLeftRadius: "10px", borderBottomRightRadius: "10px"}}>
             <form className="form-horizontal">
                 <Field
                     name="firstName"

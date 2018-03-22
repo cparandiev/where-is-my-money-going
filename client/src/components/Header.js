@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 
 const Header = () => (
 
-    <nav className="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+    <nav className="navbar navbar-toggleable-md navbar-inverse bg-inverse x-nav">
         <button
             className="navbar-toggler navbar-toggler-right"
             type="button"

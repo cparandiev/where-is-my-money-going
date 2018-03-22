@@ -14,7 +14,7 @@ const AddExpenseForm = (props) => {
 
     return (
         <div className="main-center-2">
-            <form className="form-horizontal">
+            <form className="form-horizontal x-form">
                 <div className="row">
                     <div className="col-lg-5">
                         <div className='form-group'>
@@ -60,10 +60,9 @@ const AddExpenseForm = (props) => {
                         type="button"
                         style={{
                         borderRadius: "35px",
-                        backgroundColor: "#0c7162",
                         fontSize: "25px"
                     }}
-                        className="btn btn-primary btn-lg btn-block login-button was-2">Submit</button>
+                        className="btn btn-primary btn-lg btn-block login-button was-2 yellow-crusta">Submit</button>
                 </div>
             </form>
         </div>
